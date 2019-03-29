@@ -31,18 +31,39 @@ var checkForMatch = function(){
 	alert('Sorry, try again!');
 }};
 
-var flipCard = function(cardId){ //card flip confirmation
+var flipCard = function(){ 
+	var cardId = this.getAttribute('data-id');//returns a number equal to the [i] of the clicked card
 	console.log('User flipped ' + cards[cardId].rank);
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
-	cardsInPlay.push(cards[cardId].rank);
+	cardsInPlay.push(cards[cardId].rank);//enters card rank into cardsInPlay array
+	this.setAttribute('src', cards[cardId].cardImage);
+	if (cardsInPlay.length === 2){
 	checkForMatch();
+}};
+
+var createBoard = function(){
+	for(var i = 0; i < cards.length; i++){
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', "images/back.png");
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+	}
+}
+
+var playAgain = function(){
+	location.reload();
 };
-flipCard(0);
-flipCard(2);
+
+document.getElementsByTagName('button')[0].addEventListener('click', playAgain);
+
+createBoard();
 
 /*var cardOne = cards[0];
 	var cardTwo = cards[1];
 cardsInPlay.push(cardOne);
 cardsInPlay.push(cardTwo);*/
 //if (cardsInPlay.length === 2){
+
+//cardElement.innerHTML = 'src=' + cards[i].cardImage + ' alt=' + cards[i].rank + " of " + cards[i].suit;	

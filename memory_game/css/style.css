@@ -11,7 +11,7 @@ button{
 	font-weight: 600;
 	color: #0D2C40;
 }
-h1,h2,a{
+h1,h2,h4,a{
 	text-transform: uppercase;
 	font-family: Raleway;
 }
@@ -20,17 +20,17 @@ h1{
 	font-size: 45px;
 	margin: 0;
 }
+h2,h4{
+	font-weight: 600;
+	font-size: 20px;
+	color: #0D2C40;
+}
 a{
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 18px;
 	color: #FFFFFF;
 	margin: 0 20px;
-}
-h2{
-	font-weight: 600;
-	font-size: 20px;
-	color: #0D2C40;
 }
 p{
 	font-family: "Droid Serif";

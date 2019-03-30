@@ -22,11 +22,24 @@ var cards = [
 }
 ];
 
+function shuffle(cards) {
+    var j, x, i;
+    for (i = cards.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = cards[i];
+        cards[i] = cards[j];
+        cards[j] = x;
+    }
+    return cards;
+}
+
 var cardsInPlay = [];
 
 var checkForMatch = function(){
+	var currentScore = parseInt(document.getElementById('score').innerHTML, 10);
 	if (cardsInPlay[0] === cardsInPlay[1]){
 	alert('You found a match!');
+	document.getElementById('score').innerHTML = currentScore += 1;
 	} else {
 	alert('Sorry, try again!');
 }};
@@ -52,18 +65,19 @@ var createBoard = function(){
 	}
 }
 
+var clearBoard = function(){
+	var imgNode = document.getElementById('game-board');
+		while(imgNode.hasChildNodes()){
+			imgNode.removeChild(imgNode.firstChild);
+			cardsInPlay.pop();
+		}
+	}
+	
 var playAgain = function(){
-	location.reload();
+	clearBoard();
+	createBoard();
+	shuffle(cards);
 };
-
 document.getElementsByTagName('button')[0].addEventListener('click', playAgain);
-
+shuffle(cards);
 createBoard();
-
-/*var cardOne = cards[0];
-	var cardTwo = cards[1];
-cardsInPlay.push(cardOne);
-cardsInPlay.push(cardTwo);*/
-//if (cardsInPlay.length === 2){
-
-//cardElement.innerHTML = 'src=' + cards[i].cardImage + ' alt=' + cards[i].rank + " of " + cards[i].suit;	

@@ -31,7 +31,7 @@ function shuffle(cards) {
         cards[j] = x;
     }
     return cards;
-}
+};
 
 var cardsInPlay = [];
 
@@ -63,7 +63,7 @@ var createBoard = function(){
 		cardElement.addEventListener('click', flipCard);
 		document.getElementById('game-board').appendChild(cardElement);
 	}
-}
+};
 
 var clearBoard = function(){
 	var imgNode = document.getElementById('game-board');
@@ -71,7 +71,7 @@ var clearBoard = function(){
 			imgNode.removeChild(imgNode.firstChild);
 			cardsInPlay.pop();
 		}
-	}
+	};
 	
 var playAgain = function(){
 	clearBoard();
